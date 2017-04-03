@@ -61,7 +61,7 @@
     "taskParameters" : [ {
       "id" : "dd7769d7-7523-41c2-98b2-553ea15f10d6",
       "ordinal" : 1,
-      "value" : "NewFileVar1",
+      "value" : "TestRepo",
       "desc" : "Left Hand Parameter (left of equal)",
       "name" : "leftParam",
       "valueType" : 0,
