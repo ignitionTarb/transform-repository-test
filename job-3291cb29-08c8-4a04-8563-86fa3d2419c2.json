@@ -1,0 +1,178 @@
+{
+  "id" : "3291cb29-08c8-4a04-8563-86fa3d2419c2",
+  "name" : "Import Orders",
+  "enabled" : true,
+  "tasks" : [ {
+    "id" : "c8c905fc-77fc-4a9b-9863-c76ef881cca2",
+    "ordinal" : 1,
+    "taskParameters" : [ {
+      "id" : "10b8717b-e1f5-4f66-8b00-456a495718e1",
+      "ordinal" : 1,
+      "value" : "johnny.appleseed",
+      "desc" : "User to login to ftp",
+      "name" : "user",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "4f75fa01-c582-49aa-8f20-1b48462a8b28"
+    }, {
+      "id" : "633c5c80-bb2b-40d1-ad31-7d2f59f9aee8",
+      "ordinal" : 1,
+      "value" : "brian.tarbell4444444",
+      "desc" : "User to login to ftp",
+      "name" : "user",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "4f75fa01-c582-49aa-8f20-1b48462a8b28"
+    }, {
+      "id" : "30aed009-5092-45f6-830c-954474ce891a",
+      "ordinal" : 2,
+      "value" : "siocyArHeu9T0lPqkDTMvtvGhI1xE95C1YqCDFgF7hKx5ykP9V1C6O7Y3gLbJNZfQSJRCmDiWEI6HJ79NOxscPrGE6W0mWGvIokj77fQU3w=",
+      "desc" : "Password to login to ftp",
+      "name" : "password",
+      "valueType" : 0,
+      "secret" : true,
+      "refId" : "48fbf631-e014-45ee-a8eb-298ac7d1fa21"
+    }, {
+      "id" : "64a89a0c-9429-4449-bbbb-59f485a382f5",
+      "ordinal" : 2,
+      "value" : "3rd56rYytzv+f5stJzXp9Q==",
+      "desc" : "Password to login to ftp",
+      "name" : "password",
+      "valueType" : 0,
+      "secret" : true,
+      "refId" : "48fbf631-e014-45ee-a8eb-298ac7d1fa21"
+    }, {
+      "id" : "9918dea2-1e62-4ee0-b41d-9b29b0f92ee7",
+      "ordinal" : 3,
+      "value" : "https://ignition01.alliance-prtnr-na01.dw.demandware.net/on/demandware.servlet/webdav/Sites/Impex/src/order/order_export_SiteGenesis_.*.xml",
+      "desc" : "Url to file",
+      "name" : "url",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "45c250b3-72b5-4d81-a392-6ab7c6f5709d"
+    }, {
+      "id" : "9e1236f5-67ff-40fa-8e73-c1177a15d44f",
+      "ordinal" : 3,
+      "value" : "ftp://someftphost/input/*.xml",
+      "desc" : "Url to file",
+      "name" : "url",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "45c250b3-72b5-4d81-a392-6ab7c6f5709d"
+    }, {
+      "id" : "7e77a124-5c1a-4f07-8341-9d3d21490ffa",
+      "ordinal" : 4,
+      "value" : "OutputFile",
+      "desc" : "Key name of output file",
+      "name" : "outputKey",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "201b77ea-8e35-4c3c-9f45-dd8afc123e10"
+    }, {
+      "id" : "9922f649-ac79-4970-ada7-356a85ccc9c4",
+      "ordinal" : 4,
+      "value" : "OutputFile",
+      "desc" : "Key name of output file",
+      "name" : "outputKey",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "201b77ea-8e35-4c3c-9f45-dd8afc123e10"
+    } ],
+    "jobId" : "3291cb29-08c8-4a04-8563-86fa3d2419c2",
+    "name" : "Download File to Map Task",
+    "key" : "Core::DownloadFileToMapTask",
+    "clazz" : "com.ignitioncommerce.transform.tasks.core.DownloadFileToMapTask",
+    "enabled" : true,
+    "desc" : "Task used to download a file from FTP,SFTP,FTPS,Local and S3.",
+    "trigger" : false,
+    "refId" : "84211b05-40ce-4939-874d-825b983c3bda",
+    "clazzType" : "Java",
+    "childTasks" : [ ],
+    "hasSubTask" : false,
+    "stopOnError" : true,
+    "reportOnError" : true
+  }, {
+    "id" : "2f9b8d08-6bcc-4e84-a3fa-fac1aff55645",
+    "ordinal" : 2,
+    "taskParameters" : [ {
+      "id" : "35988db9-d6ce-4cae-8aa1-37dec0599634",
+      "ordinal" : 1,
+      "value" : "TestRepo",
+      "desc" : "Left Hand Parameter (left of equal)",
+      "name" : "leftParam",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "872220ae-b87f-4ee4-8f74-b818960e521f"
+    }, {
+      "id" : "cadc3878-43a0-4298-b752-7cb2fd82a21e",
+      "ordinal" : 1,
+      "value" : "someVariable",
+      "desc" : "Left Hand Parameter (left of equal)",
+      "name" : "leftParam",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "872220ae-b87f-4ee4-8f74-b818960e521f"
+    }, {
+      "id" : "04cf1b67-a03e-4895-9ce2-22c590aeddee",
+      "ordinal" : 2,
+      "value" : "someValue or ${var testString = 'Hello World'; testString;}",
+      "desc" : "Right Hand Parameter (right of equal)  Can contain ${} that contains javascript",
+      "name" : "rightParam",
+      "valueType" : 2,
+      "secret" : false,
+      "refId" : "983f881a-9f10-43cc-9850-e913d2ad530a"
+    }, {
+      "id" : "fbaac6a1-d60e-4aa6-9e23-ca8cd62a54ad",
+      "ordinal" : 2,
+      "value" : "OutputFile",
+      "desc" : "Right Hand Parameter (right of equal)  Can contain ${} that contains javascript",
+      "name" : "rightParam",
+      "valueType" : 2,
+      "secret" : false,
+      "refId" : "983f881a-9f10-43cc-9850-e913d2ad530a"
+    } ],
+    "jobId" : "3291cb29-08c8-4a04-8563-86fa3d2419c2",
+    "name" : "Assign Task",
+    "key" : "Core::AssignTask",
+    "clazz" : "com.ignitioncommerce.transform.tasks.core.AssignTask",
+    "enabled" : true,
+    "desc" : "Task used to Assign one key to another in the parameter dictionary",
+    "trigger" : false,
+    "refId" : "f749f807-bc45-4213-8db8-e66a8f263f44",
+    "clazzType" : "Java",
+    "childTasks" : [ ],
+    "hasSubTask" : false,
+    "stopOnError" : true,
+    "reportOnError" : true
+  }, {
+    "id" : "622c5d63-8ac6-4cc4-a66f-94c47d931e93",
+    "ordinal" : 3,
+    "taskParameters" : [ {
+      "id" : "19ae3324-ac53-4cfd-9f5a-b7cf38e3ed30",
+      "ordinal" : 1,
+      "value" : "var i = 1;\nvar test = i + 1;\n",
+      "desc" : "Script to execute",
+      "name" : "script",
+      "valueType" : 2,
+      "secret" : false,
+      "refId" : "61734d1c-1ff6-4a2b-a251-00f3bd76b9ed"
+    } ],
+    "jobId" : "3291cb29-08c8-4a04-8563-86fa3d2419c2",
+    "name" : "Script Task",
+    "key" : "Core::ScriptTask",
+    "clazz" : "com.ignitioncommerce.transform.tasks.core.ScriptTask",
+    "enabled" : false,
+    "desc" : "Task used to execute custom javascript",
+    "trigger" : false,
+    "refId" : "f5d44f40-cbd4-45fa-b45f-b062e546ad0f",
+    "clazzType" : "Java",
+    "childTasks" : [ ],
+    "hasSubTask" : false,
+    "stopOnError" : true,
+    "reportOnError" : true
+  } ],
+  "desc" : "Import Orders",
+  "status" : "READY",
+  "trigger" : false,
+  "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_db7fc6de-3112-4136-99e6-18f420b45616"
+}
