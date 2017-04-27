@@ -1,0 +1,164 @@
+{
+  "id" : "be221837-873b-49d0-b32f-e278c2105ca5",
+  "name" : "Workday - Create Invoice",
+  "enabled" : true,
+  "tasks" : [ {
+    "id" : "aac7c774-9e76-400b-838b-6e0a21d166a5",
+    "ordinal" : 1,
+    "taskParameters" : [ {
+      "id" : "c788b619-c68a-42c9-bce7-8ddb4bababf6",
+      "ordinal" : 1,
+      "value" : "http://api4dev.shopvisible.com/OrderService.asmx/GetOrdersByDateRange?ClientName=TheMet_Staging&Guid=cd792d11-bf8c-e611-8101-06a33a6db6fd&DateStart=3%2F22%2F2017&DateEnd=3%2F22%2F2017&IncludeCustomerInfo=TRUE",
+      "desc" : "URL to post.  Delimited parameters will be replaced",
+      "name" : "url",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "9ba450d6-f280-4de2-b43a-941d6bb31495"
+    }, {
+      "id" : "dbbdfdca-06aa-475f-900a-75ccefc08cd0",
+      "ordinal" : 3,
+      "value" : "",
+      "desc" : "Success Processor",
+      "name" : "successProcessor",
+      "valueType" : 2,
+      "secret" : false,
+      "refId" : "09821f9a-59c0-4e92-872a-842411f83276"
+    }, {
+      "id" : "b5c9aac9-4a2b-4fa9-bd36-c0bf0329d45f",
+      "ordinal" : 4,
+      "value" : "",
+      "desc" : "Authentication Processor",
+      "name" : "authProcessor",
+      "valueType" : 2,
+      "secret" : false,
+      "refId" : "6d7a9a8c-d849-4946-80ad-fcf8f1992d86"
+    }, {
+      "id" : "3b80291c-abde-422f-9aec-1743c8d3779d",
+      "ordinal" : 5,
+      "value" : "OrderInfo",
+      "desc" : "Key name of output",
+      "name" : "outputKey",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "14f3479a-a907-4f1a-a218-a58d995c5de2"
+    }, {
+      "id" : "5baeb429-8fbf-4c01-9271-e9810549247e",
+      "ordinal" : 7,
+      "value" : "Mozilla/5.0",
+      "desc" : "User Agent Header",
+      "name" : "userAgent",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "b651d20b-83f4-4ba8-a7a8-6bf6481caaf0"
+    } ],
+    "job" : {
+      "id" : "be221837-873b-49d0-b32f-e278c2105ca5",
+      "name" : "Workday - Create Invoice",
+      "enabled" : true,
+      "desc" : "Workday - Create Invoice",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_1bbd1738-25d6-4ded-bf97-0593d5ac7595",
+      "key" : "IC-00000004",
+      "environment" : "STAGING"
+    },
+    "name" : "Http Get to Map Task",
+    "key" : "Core::HttpGetToMapTask",
+    "comment" : "Used for debug",
+    "clazz" : "com.ignitioncommerce.transform.tasks.core.HttpGetToMapTask",
+    "enabled" : true,
+    "desc" : "Task used to do an http get and store it's information to the map",
+    "refId" : "6da8b3d0-7d76-43e0-a047-fabdc31063eb",
+    "clazzType" : "Java",
+    "childTasks" : [ ],
+    "hasSubTask" : false,
+    "stopOnError" : true,
+    "reportOnError" : true
+  }, {
+    "id" : "6b092801-cc79-4d51-984d-139d729686f2",
+    "ordinal" : 2,
+    "taskParameters" : [ {
+      "id" : "d6ce48a0-f16b-49b8-885f-ceb6210f4bd9",
+      "ordinal" : 1,
+      "value" : "OrderInfo",
+      "desc" : "Key name of input file\n",
+      "name" : "inputKey",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "33b71961-09fb-4f69-9df8-46721a14b8a4"
+    }, {
+      "id" : "a10fda04-8359-450a-9874-7fbd4b8471a0",
+      "ordinal" : 2,
+      "value" : "OrdersMap",
+      "desc" : "Key name to hold return value in dictionary",
+      "name" : "outputKey",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "f1628808-0116-4d32-bff0-af0cb53d06b2"
+    }, {
+      "id" : "d88c95f6-4fbb-41b4-8250-cfb62e11fc2b",
+      "ordinal" : 4,
+      "value" : "/Orders/Order",
+      "desc" : "Node to Break the row on",
+      "name" : "rowIndicator",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "be88cc2e-5ba9-4277-a484-1d8146b78565"
+    } ],
+    "job" : {
+      "id" : "be221837-873b-49d0-b32f-e278c2105ca5",
+      "name" : "Workday - Create Invoice",
+      "enabled" : true,
+      "desc" : "Workday - Create Invoice",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_1bbd1738-25d6-4ded-bf97-0593d5ac7595",
+      "key" : "IC-00000004",
+      "environment" : "STAGING"
+    },
+    "name" : "XML to Map Task",
+    "key" : "Core::XmlToMapTask",
+    "clazz" : "com.ignitioncommerce.transform.tasks.core.XmlToMapTask",
+    "enabled" : true,
+    "desc" : "Task used to read xml file into the dictionary",
+    "refId" : "4ca3d6e5-23fc-4d6a-beb2-09f0c9a5c2f3",
+    "clazzType" : "Java",
+    "childTasks" : [ ],
+    "hasSubTask" : false,
+    "stopOnError" : true,
+    "reportOnError" : true
+  }, {
+    "id" : "c861016d-e070-4d7c-9196-4a1ebefa63f4",
+    "ordinal" : 3,
+    "taskParameters" : [ {
+      "id" : "5c4fb811-21d2-438f-8c12-b1ffa19b187a",
+      "ordinal" : 1,
+      "value" : "/*\n * Takes an Orders hash generated from APTOS Order xml, executes\n * business rule against it  \n */\nvar root = new java.util.HashMap();\nvar mifIterator = new com.ignitioncommerce.transform.util.MapInFileIterator(dict.get('OrdersMap'));\n\nvar invoices = new java.util.ArrayList();\nvar seq = 1;\nvar isReturn = false;\nvar fileName = dict.get('OrderFile_ORIG_FILE_NAME_');\nvar pos = fileName.indexOf('_');\nvar pos2 = fileName.indexOf('_', pos+1);\nvar shipDate = fileName.substring(pos+1, pos2);\nvar orderCredits = getOrderCredits(shipDate);\nvar creditReasonMap = { \"Customer Appeasement\": \"CA\", \"Postage Refund\": \"C \", \"Gift Wrap Refund\": \"GW\",\n                        \"Promo Discount Refund\": \"P\", \"Freight Credit\": \"F \", \"Member Discount\": \"MD\",\n                        \"Return Credit\": \"R \", \"Miscellaneous\": \"D \", \"Other\": \"D \"};\nwhile (mifIterator.hasNext()) {\n  var order = mifIterator.next();\n  var orderStatus = order.OrderStatusId;\n  \n  // we have to check for list as it could be a list or an object\n  var itemList = ICT.LIST(order.OrderItems.Item);\n  if (itemList.size() === 0) continue;\n  var oiIter = itemList.iterator();\n  var invoiceItemTotal = 0;\n  var invoiceShippingTotal = 0;\n  var invoiceTaxTotal = 0;\n  var creditTotal = 0;\n  var writeShippingAndTotal = false;\n  var itemCacheMap = new java.util.HashMap();\n  while(oiIter.hasNext()) {\n    var orderItem = oiIter.next();\n\t  var itemStatus = orderItem.ItemStatusId;\n\t  var shipDateFound = false;\n\t  var itemShipDate = orderItem.ItemShipDate;\n\t  var itemCache = {\n\t\t  ItemId: orderItem.ItemID,\n\t\t  ProductPartNo: orderItem.ItemProduct.ProductPartNo,\n\t\t  Quantity: orderItem.ItemQuantity\n\t  };\t\n\t  itemCacheMap.put(orderItem.ItemID, itemCache);\n\t  try {\n\t    var parts = itemShipDate.split('T');\n\t    itemShipDate = parts[0];\n\t    itemShipDate = itemShipDate.replaceAll('\\\\-', '');\n\t    shipDateFound = true;\n\t  } catch (err) { }\n\t  if (itemStatus == '17') {\n\t    addItem(order, 'I', '99', orderItem.ItemProduct.ProductPartNo, orderItem.ItemQuantity,\n\t      ICT.CUR(orderItem.ItemPrice),ICT.CUR(orderItem.ItemTax), false, itemStatus, '');  \n\t  }\n  \n    if (writeShippingAndTotal) {\n      // add shipping line\n      if (ICT.DBL(invoiceShippingTotal) > 0) {\n        addItem(order, 'I', '03', '', 0, ICT.CUR(invoiceShippingTotal), '0', false, '0', '');\n      }\n      // add record total\n      addItem(order, 'I', '04', '', 0, ICT.CUR(parseFloat(invoiceItemTotal)+parseFloat(invoiceShippingTotal)), ICT.CUR(invoiceTaxTotal), false, '0', '');  \t  \n    } \n  }\n}\n\nfunction getOrderCredits(shipDate) {\n  var url = 'http://api4dev.shopvisible.com/OrderService.asmx/GetOrderCredits?'+\n  \t'ClientName=TheMet_Staging&Guid=cd792d11-bf8c-e611-8101-06a33a6db6fd';\n  var con = new java.net.URL(url).openConnection();\n  con.requestMethod = 'GET';\n  con.contentType = 'text/xml';\n  var inReader = new java.io.BufferedReader(new java.io.InputStreamReader(con.inputStream));\n  var response = new java.lang.StringBuffer();\n  var inputLine;\n  \n  while ((inputLine = inReader.readLine()) != null) {\n  \tresponse.append(inputLine);\n  }\n  inReader.close();\n  var retMap = new java.util.HashMap();\n\n  var factory = javax.xml.parsers.DocumentBuilderFactory.newInstance();\n  var builder = factory.newDocumentBuilder();\n  var doc = builder.parse(new java.io.ByteArrayInputStream(response.toString().getBytes()));\n  var xPathFactory = javax.xml.xpath.XPathFactory.newInstance();\n  var xpath = xPathFactory.newXPath();\n  var xpathExpression = xpath.compile('/OrderCredits/OrderCredit');\n  var nodeList = xpathExpression.evaluate(doc, javax.xml.xpath.XPathConstants.NODESET);\n  for (var i=0;i<nodeList.getLength();i++) {\n    var orderCreditNode = nodeList.item(i);\n    if (orderCreditNode.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {\n      var creditDate = orderCreditNode.getElementsByTagName('CreditDate').item(0).getTextContent();\n\t    var parts = creditDate.split('T');\n\t    if (parts.length > 1) {\n\t\t  creditDate = parts[0].replaceAll('\\\\-', '');\n\t\t  if (creditDate.equalsIgnoreCase(shipDate)) {\n\t      var creditType = orderCreditNode.getElementsByTagName('CreditType').item(0).getTextContent();\n    \t  var creditAmount = orderCreditNode.getElementsByTagName('CreditAmount').item(0).getTextContent();\n      \t  var creditReason = orderCreditNode.getElementsByTagName('CreditReason').item(0).getTextContent();\n      \t  var orderNo = orderCreditNode.getElementsByTagName('OrderNumber').item(0).getTextContent();\n      \t  var itemId = orderCreditNode.getElementsByTagName('ItemID').item(0).getTextContent();\n      \t  \n      \t  if ('S'.equalsIgnoreCase(creditType)) {\n      \t    creditReason = 'F';\n      \t  } else {\n      \t    creditReason = creditReasonMap.get(creditReason);\n      \t  } \n      \t  var orderCredit = {\n      \t    \"CreditType\": creditType,\n      \t    \"CreditAmount\": creditAmount,\n      \t    \"CreditReason\": creditReason,\n      \t    \"ItemId\": itemId\n      \t  };\t      \n\t      if (retMap.containsKey(orderNo)) {\n\t        var list = retMap.get(orderNo);\n\t        list.add(orderCredit);\n\t      } else {\n\t        var list = new java.util.ArrayList();\n\t        list.add(orderCredit);\n\t        retMap.put(orderNo, list);\n\t      }\n\t    }\n      }\n    }\n  }\n  return retMap;\n}",
+      "desc" : "Script to execute",
+      "name" : "script",
+      "valueType" : 2,
+      "secret" : false,
+      "refId" : "61734d1c-1ff6-4a2b-a251-00f3bd76b9ed"
+    } ],
+    "job" : {
+      "id" : "be221837-873b-49d0-b32f-e278c2105ca5",
+      "name" : "Workday - Create Invoice",
+      "enabled" : true,
+      "desc" : "Workday - Create Invoice",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_1bbd1738-25d6-4ded-bf97-0593d5ac7595",
+      "key" : "IC-00000004",
+      "environment" : "STAGING"
+    },
+    "name" : "Script Task",
+    "key" : "Core::ScriptTask",
+    "clazz" : "com.ignitioncommerce.transform.tasks.core.ScriptTask",
+    "enabled" : true,
+    "desc" : "Task used to execute custom javascript",
+    "refId" : "f5d44f40-cbd4-45fa-b45f-b062e546ad0f",
+    "clazzType" : "Java",
+    "childTasks" : [ ],
+    "hasSubTask" : false,
+    "stopOnError" : true,
+    "reportOnError" : true
+  } ],
+  "desc" : "Workday - Create Invoice",
+  "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_1bbd1738-25d6-4ded-bf97-0593d5ac7595",
+  "key" : "IC-00000004",
+  "environment" : "STAGING"
+}
