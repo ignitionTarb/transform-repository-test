@@ -65,7 +65,7 @@
     "key" : "Core::HttpGetToMapTask",
     "comment" : "Used for debug",
     "clazz" : "com.ignitioncommerce.transform.tasks.core.HttpGetToMapTask",
-    "enabled" : true,
+    "enabled" : false,
     "desc" : "Task used to do an http get and store it's information to the map",
     "refId" : "6da8b3d0-7d76-43e0-a047-fabdc31063eb",
     "clazzType" : "Java",
@@ -74,8 +74,69 @@
     "stopOnError" : true,
     "reportOnError" : true
   }, {
-    "id" : "6b092801-cc79-4d51-984d-139d729686f2",
+    "id" : "9c31986f-efe4-4f37-bbe6-34a58a6dac4e",
     "ordinal" : 2,
+    "taskParameters" : [ {
+      "id" : "994daeee-93c1-4c17-9bc4-ea81302afd57",
+      "ordinal" : 1,
+      "value" : "!{ftpuser}",
+      "desc" : "User to login to ftp",
+      "name" : "user",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "4f75fa01-c582-49aa-8f20-1b48462a8b28"
+    }, {
+      "id" : "e6362117-43e7-42f6-b09e-b52b739eb612",
+      "ordinal" : 2,
+      "value" : "Mu+KttQ5jSnVA9I9kN9ebw==",
+      "desc" : "Password to login to ftp",
+      "name" : "password",
+      "valueType" : 0,
+      "secret" : true,
+      "refId" : "48fbf631-e014-45ee-a8eb-298ac7d1fa21"
+    }, {
+      "id" : "5f51385e-7f1e-4b45-8119-032871a47d12",
+      "ordinal" : 3,
+      "value" : "!{ftpurl}/input/EpsilonOrderCreated.*.xml",
+      "desc" : "Url to file",
+      "name" : "url",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "45c250b3-72b5-4d81-a392-6ab7c6f5709d"
+    }, {
+      "id" : "9132022c-8d01-4684-8647-3d86483e62ae",
+      "ordinal" : 4,
+      "value" : "OrderInfo",
+      "desc" : "Key name of output file",
+      "name" : "outputKey",
+      "valueType" : 0,
+      "secret" : false,
+      "refId" : "201b77ea-8e35-4c3c-9f45-dd8afc123e10"
+    } ],
+    "job" : {
+      "id" : "be221837-873b-49d0-b32f-e278c2105ca5",
+      "name" : "Workday - Create Invoice",
+      "enabled" : true,
+      "desc" : "Workday - Create Invoice",
+      "status" : "READY",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_1bbd1738-25d6-4ded-bf97-0593d5ac7595",
+      "key" : "IC-00000004",
+      "environment" : "STAGING"
+    },
+    "name" : "Download File to Map Task",
+    "key" : "Core::DownloadFileToMapTask",
+    "clazz" : "com.ignitioncommerce.transform.tasks.core.DownloadFileToMapTask",
+    "enabled" : true,
+    "desc" : "Task used to download a file from FTP,SFTP,FTPS,Local and S3.",
+    "refId" : "84211b05-40ce-4939-874d-825b983c3bda",
+    "clazzType" : "Java",
+    "childTasks" : [ ],
+    "hasSubTask" : false,
+    "stopOnError" : true,
+    "reportOnError" : true
+  }, {
+    "id" : "6b092801-cc79-4d51-984d-139d729686f2",
+    "ordinal" : 3,
     "taskParameters" : [ {
       "id" : "d6ce48a0-f16b-49b8-885f-ceb6210f4bd9",
       "ordinal" : 1,
@@ -127,11 +188,11 @@
     "reportOnError" : true
   }, {
     "id" : "c861016d-e070-4d7c-9196-4a1ebefa63f4",
-    "ordinal" : 3,
+    "ordinal" : 4,
     "taskParameters" : [ {
       "id" : "5c4fb811-21d2-438f-8c12-b1ffa19b187a",
       "ordinal" : 1,
-      "value" : "/*\n * Takes an Orders hash generated from APTOS Order xml, executes\n * business rule against it  \n */\nvar root = new java.util.HashMap();\nvar mifIterator = new com.ignitioncommerce.transform.util.MapInFileIterator(dict.get('OrdersMap'));\n\nvar invoices = new java.util.ArrayList();\nvar seq = 1;\nvar isReturn = false;\nvar fileName = dict.get('OrderFile_ORIG_FILE_NAME_');\nvar pos = fileName.indexOf('_');\nvar pos2 = fileName.indexOf('_', pos+1);\nvar shipDate = fileName.substring(pos+1, pos2);\nvar orderCredits = getOrderCredits(shipDate);\nvar creditReasonMap = { \"Customer Appeasement\": \"CA\", \"Postage Refund\": \"C \", \"Gift Wrap Refund\": \"GW\",\n                        \"Promo Discount Refund\": \"P\", \"Freight Credit\": \"F \", \"Member Discount\": \"MD\",\n                        \"Return Credit\": \"R \", \"Miscellaneous\": \"D \", \"Other\": \"D \"};\nwhile (mifIterator.hasNext()) {\n  var order = mifIterator.next();\n  var orderStatus = order.OrderStatusId;\n  var orderXML = \"<bsvc:Submit_Customer_Invoice_Request bsvc:Add_Only=\\\"false\\\" bsvc:version=\\\"string\\\" xmlns:bsvc=\\\"urn:com.workday/bsvc\\\">\";\n  \n  orderXML += \"<bsvc:ID bsvc:type=\\\"string\\\">\" + order.OrderCustomer.CustomerExternalID + \"</bsvc:ID>\";\n\n    \n    invoices.add(orderXML);\n    dict.put(\"invoices\",invoices);\n}",
+      "value" : "/*\n * Takes an Orders hash generated from APTOS Order xml, executes\n * business rule against it  \n */\nload('!{ThisHost}/js/global.js')\nvar root = new java.util.HashMap();\nvar mifIterator = new com.ignitioncommerce.transform.util.MapInFileIterator(dict.get('OrdersMap'));\n\nvar invoices = new java.util.ArrayList();\nvar seq = 1;\nvar isReturn = false;\nvar fileName = dict.get('OrderInfo_ORIG_FILE_NAME_');\nvar pos = fileName.indexOf('_');\nvar pos2 = fileName.indexOf('_', pos+1);\nvar shipDate = fileName.substring(pos+1, pos2);\n//var orderCredits = getOrderCredits(shipDate);\nvar creditReasonMap = { \"Customer Appeasement\": \"CA\", \"Postage Refund\": \"C \", \"Gift Wrap Refund\": \"GW\",\n                        \"Promo Discount Refund\": \"P\", \"Freight Credit\": \"F \", \"Member Discount\": \"MD\",\n                        \"Return Credit\": \"R \", \"Miscellaneous\": \"D \", \"Other\": \"D \"};\nwhile (mifIterator.hasNext()) {\n  var order = mifIterator.next();\n  var orderStatus = order.OrderStatusId;\n  var orderXML = \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?><env:Envelope xmlns:env=\\\"http://schemas.xmlsoap.org/soap/envelope/\\\"\txmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:bsvc=\\\"urn:com.workday/bsvc\\\" xmlns:wsse=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\\\">\";\norderXML += \"<env:Header><wsse:Security env:mustUnderstand=\\\"1\\\">\";\norderXML += \"<wsse:UsernameToken>\";\norderXML += \"<wsse:Username>!{WorkDayUsername}</wsse:Username>\";\norderXML += \"<wsse:Password Type=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\\\">!{WorkDayPassword}</wsse:Password>\";\norderXML += \"</wsse:UsernameToken>\";\norderXML += \"</wsse:Security>\";\norderXML += \"<bsvc:Workday_Common_Header>\";\norderXML += \"<bsvc:Include_Reference_Descriptors_In_Response>true</bsvc:Include_Reference_Descriptors_In_Response>\";\norderXML += \"</bsvc:Workday_Common_Header>\";\norderXML += \"</env:Header>\";\norderXML += \"<env:Body>\";\norderXML += \"<bsvc:Submit_Customer_Invoice_Request bsvc:Add_Only=\\\"true\\\" bsvc:version=\\\"v28.0\\\" xmlns:bsvc=\\\"urn:com.workday/bsvc\\\">\";\norderXML += \"<bsvc:Business_Process_Parameters>\";\norderXML += \"<bsvc:Auto_Complete>true</bsvc:Auto_Complete>\";\norderXML += \"<bsvc:Comment_Data>\";\norderXML += \"<bsvc:Comment>Submitted by Aptos</bsvc:Comment>\";\norderXML += \"</bsvc:Comment_Data>\";\norderXML += \"</bsvc:Business_Process_Parameters>\";\norderXML += \"<bsvc:Customer_Invoice_Data>\";\n//orderXML += \"<bsvc:Customer_Order_Number>10185</bsvc:Customer_Order_Number>\";\norderXML += \"<bsvc:Customer_PO_Number></bsvc:Customer_PO_Number>\";\norderXML += \"<bsvc:Company_Reference>\";\norderXML += \"<bsvc:ID bsvc:type=\\\"Company_Reference_ID\\\">100</bsvc:ID>\";\norderXML += \"</bsvc:Company_Reference>\";\norderXML += \"<bsvc:Customer_Reference>\";\norderXML += \"<bsvc:ID bsvc:type=\\\"Customer_ID\\\">\" + order.OrderCustomer.CustomerExternalID + \"</bsvc:ID>\";\norderXML += \"</bsvc:Customer_Reference>\";\n//orderXML += \"<bsvc:Invoice_Date>2017-03-22T15:29:00</bsvc:Invoice_Date>\";\norderXML += \"<bsvc:Amount_Due>\" + order.OrderAmountBalance + \"</bsvc:Amount_Due>\";\n//orderXML += \"<bsvc:Memo></bsvc:Memo>\";\norderXML += \"<bsvc:Customer_Invoice_Line_Replacement_Data>\";\norderXML += \"<bsvc:Line_Item_Description>Shipping</bsvc:Line_Item_Description>\";\norderXML += \"<bsvc:Quantity>1</bsvc:Quantity>\";\norderXML += \"<bsvc:Unit_Cost>\" + order.OrderAmountShipping + \"</bsvc:Unit_Cost>\";\norderXML += \"<bsvc:Line_Order>1</bsvc:Line_Order>\";\norderXML += \"<bsvc:Revenue_Category_Reference>\";\norderXML += \"<bsvc:ID bsvc:type=\\\"Shipping\\\"></bsvc:ID>\";\norderXML += \"</bsvc:Revenue_Category_Reference>\";\norderXML += \"</bsvc:Customer_Invoice_Line_Replacement_Data>\";\n\nvar itemList = ICT.LIST(order.OrderItems.Item);\nif (itemList.size() == 0) continue;\nvar oiIter = itemList.iterator();\nvar iCtr = 2;\nwhile(oiIter.hasNext()) {\n  var orderItem = oiIter.next();\n  var shipDateFound = false;\n  var itemShipDate = orderItem.ItemShipDate;\n  \n  try {\n\tvar parts = itemShipDate.split('T');\n\titemShipDate = parts[0];\n\titemShipDate = itemShipDate.replaceAll('\\\\-', '');\n\tshipDateFound = true;\n  } catch (err) { }\n  \n  if (itemStatus == '17' && shipDateFound && itemShipDate.equalsIgnoreCase(shipDate)) {\n\taddItem(order, 'I', '01', orderItem.ItemProduct.ProductPartNo, orderItem.ItemQuantity,\n\t  ICT.CUR(orderItem.ItemPrice), ICT.CUR(orderItem.ItemTax), false, itemStatus, '');\n  } else if (itemStatus == '24' && shipDateFound && itemShipDate.equalsIgnoreCase(shipDate)) {\n  } else if (itemStatus == '6' && shipDateFound && itemShipDate.equalsIgnoreCase(shipDate)) {\n  }\n\n  orderXML += \"<bsvc:Customer_Invoice_Line_Replacement_Data>\";\n  orderXML += \"<bsvc:Line_Item_Description>\" + orderItem.ItemProduct.ProductPartNo + \" \" + orderItem.ItemProduct.ProductCode + \"</bsvc:Line_Item_Description>\";\n  orderXML += \"<bsvc:Quantity>\" + orderItem.ItemProduct.ItemQuantity + \"</bsvc:Quantity>\";\n  orderXML += \"<bsvc:Unit_Cost>\" + orderItem.ItemProduct.Price.PriceSale + \"</bsvc:Unit_Cost>\";\n  orderXML += \"<bsvc:Line_Order>\" + iCtr + \"</bsvc:Line_Order>\";\n  orderXML += \"<bsvc:Revenue_Category_Reference>\";\n  orderXML += \"<bsvc:ID bsvc:type=\\\"Revenue_Category_ID\\\"></bsvc:ID>\";\n  orderXML += \"</bsvc:Revenue_Category_Reference>\";\n  orderXML += \"</bsvc:Customer_Invoice_Line_Replacement_Data>\";\n  \n  iCtr++;\n}\n\norderXML += \"</bsvc:Customer_Invoice_Data>\";\norderXML += \"</bsvc:Submit_Customer_Invoice_Request>\";\norderXML += \"</env:Body>\";\norderXML += \"</env:Envelope>\";\n\n    \n    invoices.add(orderXML);\n    dict.put(\"invoices\",invoices);\n}",
       "desc" : "Script to execute",
       "name" : "script",
       "valueType" : 2,
@@ -161,7 +222,7 @@
     "reportOnError" : true
   }, {
     "id" : "bff72b73-f4a2-4dbc-bc3d-b2504b9974e8",
-    "ordinal" : 4,
+    "ordinal" : 5,
     "taskParameters" : [ {
       "id" : "e540d9fd-1b80-45be-a9c1-e67a089e049e",
       "ordinal" : 1,
@@ -213,7 +274,7 @@
     "reportOnError" : true
   }, {
     "id" : "90d400fa-a2ef-4d1d-86ed-9ade0b304c2e",
-    "ordinal" : 5,
+    "ordinal" : 6,
     "taskParameters" : [ {
       "id" : "937afc31-7598-426b-8259-c439f5c60c7c",
       "ordinal" : 1,
