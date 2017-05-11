@@ -8,7 +8,7 @@
     "taskParameters" : [ {
       "id" : "0e733e73-2687-4a49-a546-8814d16f429d",
       "ordinal" : 1,
-      "value" : "ftpuser1",
+      "value" : "!{ftpuser}",
       "desc" : "User to login to ftp",
       "name" : "user",
       "valueType" : 0,
@@ -17,7 +17,7 @@
     }, {
       "id" : "11858d1e-7241-4176-be3f-38d4ece516bc",
       "ordinal" : 2,
-      "value" : "Cb6noRl93L3xieH1vfPSaA==",
+      "value" : "Mu+KttQ5jSnVA9I9kN9ebw==",
       "desc" : "Password to login to ftp",
       "name" : "password",
       "valueType" : 0,
@@ -26,7 +26,7 @@
     }, {
       "id" : "9ace65bf-1721-4cd8-a1d6-4bd254742b95",
       "ordinal" : 3,
-      "value" : "ftps://demo.ignitiontransform.com/ignition/input/aptos-inventory.xml",
+      "value" : "!{ftpurl}/input/aptos-inventory.xml",
       "desc" : "Url to file",
       "name" : "url",
       "valueType" : 0,
@@ -42,7 +42,16 @@
       "secret" : false,
       "refId" : "201b77ea-8e35-4c3c-9f45-dd8afc123e10"
     } ],
-    "jobId" : "590f859d-725a-4373-b348-7b1ada88f962",
+    "job" : {
+      "id" : "590f859d-725a-4373-b348-7b1ada88f962",
+      "name" : "Demo Aptos Inventory to Commerce Cloud",
+      "enabled" : false,
+      "desc" : "Demo transformation of Aptos inventory API to Commerce Cloud Xml",
+      "status" : "READY",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_e2a3ed17-d4af-4375-bbf4-50967c0b25c5",
+      "key" : "IC-00000001",
+      "environment" : "STAGING"
+    },
     "name" : "Download File to Map Task",
     "key" : "Core::DownloadFileToMapTask",
     "comment" : "Pull down file from ftp server.",
@@ -86,7 +95,16 @@
       "secret" : false,
       "refId" : "be88cc2e-5ba9-4277-a484-1d8146b78565"
     } ],
-    "jobId" : "590f859d-725a-4373-b348-7b1ada88f962",
+    "job" : {
+      "id" : "590f859d-725a-4373-b348-7b1ada88f962",
+      "name" : "Demo Aptos Inventory to Commerce Cloud",
+      "enabled" : false,
+      "desc" : "Demo transformation of Aptos inventory API to Commerce Cloud Xml",
+      "status" : "READY",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_e2a3ed17-d4af-4375-bbf4-50967c0b25c5",
+      "key" : "IC-00000001",
+      "environment" : "STAGING"
+    },
     "name" : "XML to Map Task",
     "key" : "Core::XmlToMapTask",
     "comment" : "Convert Aptos inventory file to a map",
@@ -112,7 +130,16 @@
       "secret" : false,
       "refId" : "61734d1c-1ff6-4a2b-a251-00f3bd76b9ed"
     } ],
-    "jobId" : "590f859d-725a-4373-b348-7b1ada88f962",
+    "job" : {
+      "id" : "590f859d-725a-4373-b348-7b1ada88f962",
+      "name" : "Demo Aptos Inventory to Commerce Cloud",
+      "enabled" : false,
+      "desc" : "Demo transformation of Aptos inventory API to Commerce Cloud Xml",
+      "status" : "READY",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_e2a3ed17-d4af-4375-bbf4-50967c0b25c5",
+      "key" : "IC-00000001",
+      "environment" : "STAGING"
+    },
     "name" : "Script Task",
     "key" : "Core::ScriptTask",
     "comment" : "Prepare data by executing any client specific logic and setting up for template engine",
@@ -156,7 +183,16 @@
       "secret" : false,
       "refId" : "be1f40ef-6389-4aa3-9124-4231b715107a"
     } ],
-    "jobId" : "590f859d-725a-4373-b348-7b1ada88f962",
+    "job" : {
+      "id" : "590f859d-725a-4373-b348-7b1ada88f962",
+      "name" : "Demo Aptos Inventory to Commerce Cloud",
+      "enabled" : false,
+      "desc" : "Demo transformation of Aptos inventory API to Commerce Cloud Xml",
+      "status" : "READY",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_e2a3ed17-d4af-4375-bbf4-50967c0b25c5",
+      "key" : "IC-00000001",
+      "environment" : "STAGING"
+    },
     "name" : "Freemarker Execute Task",
     "key" : "Core::FreemarkerExecuteTask",
     "comment" : "Format to Commerce Cloud xml",
@@ -191,7 +227,16 @@
       "secret" : false,
       "refId" : "983f881a-9f10-43cc-9850-e913d2ad530a"
     } ],
-    "jobId" : "590f859d-725a-4373-b348-7b1ada88f962",
+    "job" : {
+      "id" : "590f859d-725a-4373-b348-7b1ada88f962",
+      "name" : "Demo Aptos Inventory to Commerce Cloud",
+      "enabled" : false,
+      "desc" : "Demo transformation of Aptos inventory API to Commerce Cloud Xml",
+      "status" : "READY",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_e2a3ed17-d4af-4375-bbf4-50967c0b25c5",
+      "key" : "IC-00000001",
+      "environment" : "STAGING"
+    },
     "name" : "Assign Task",
     "key" : "Core::AssignTask",
     "comment" : "Setup file name",
@@ -210,7 +255,7 @@
     "taskParameters" : [ {
       "id" : "7e2151c6-459c-4126-ab6f-22fd5013088b",
       "ordinal" : 1,
-      "value" : "ftpuser",
+      "value" : "!{ftpuser}",
       "desc" : "User to login to ftp",
       "name" : "user",
       "valueType" : 0,
@@ -219,7 +264,7 @@
     }, {
       "id" : "fab68295-9ed5-4b92-a19a-4d41a68d8b0e",
       "ordinal" : 2,
-      "value" : "Cb6noRl93L3xieH1vfPSaA==",
+      "value" : "Mu+KttQ5jSnVA9I9kN9ebw==",
       "desc" : "Password to login to ftp",
       "name" : "password",
       "valueType" : 0,
@@ -228,7 +273,7 @@
     }, {
       "id" : "b5302fb0-f9f8-4c71-90ed-d88bf1c8dca4",
       "ordinal" : 3,
-      "value" : "ftps://demo.ignitiontransform.com/ignition/output/${CCInventoryFile}",
+      "value" : "!{ftpurl}/output/${CCInventoryFile}",
       "desc" : "Url to file",
       "name" : "url",
       "valueType" : 0,
@@ -244,7 +289,16 @@
       "secret" : false,
       "refId" : "06532b8a-daf2-457c-8c65-701e9cc0ec01"
     } ],
-    "jobId" : "590f859d-725a-4373-b348-7b1ada88f962",
+    "job" : {
+      "id" : "590f859d-725a-4373-b348-7b1ada88f962",
+      "name" : "Demo Aptos Inventory to Commerce Cloud",
+      "enabled" : false,
+      "desc" : "Demo transformation of Aptos inventory API to Commerce Cloud Xml",
+      "status" : "READY",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_e2a3ed17-d4af-4375-bbf4-50967c0b25c5",
+      "key" : "IC-00000001",
+      "environment" : "STAGING"
+    },
     "name" : "Upload File from Map",
     "key" : "Core::UploadFileFromMapTask",
     "comment" : "Upload inventory file to output directory",
@@ -263,7 +317,7 @@
     "taskParameters" : [ {
       "id" : "b1b6d777-9d7c-48f4-b2c3-e8f2fe564081",
       "ordinal" : 1,
-      "value" : "ftpuser",
+      "value" : "!{ftpuser}",
       "desc" : "User to login to ftp",
       "name" : "user",
       "valueType" : 0,
@@ -272,7 +326,7 @@
     }, {
       "id" : "370d5122-1fe4-4a86-b259-a9d3e2ee8449",
       "ordinal" : 2,
-      "value" : "Cb6noRl93L3xieH1vfPSaA==",
+      "value" : "Mu+KttQ5jSnVA9I9kN9ebw==",
       "desc" : "Password to login to ftp",
       "name" : "password",
       "valueType" : 0,
@@ -281,7 +335,7 @@
     }, {
       "id" : "1b40f772-9449-4351-a0af-e1f1f7bb614b",
       "ordinal" : 3,
-      "value" : "ftps://demo.ignitiontransform.com/ignition/output/archive/${CCInventoryFile}",
+      "value" : "!{ftpurl}/output/archive/${CCInventoryFile}",
       "desc" : "Url to file",
       "name" : "url",
       "valueType" : 0,
@@ -297,7 +351,16 @@
       "secret" : false,
       "refId" : "06532b8a-daf2-457c-8c65-701e9cc0ec01"
     } ],
-    "jobId" : "590f859d-725a-4373-b348-7b1ada88f962",
+    "job" : {
+      "id" : "590f859d-725a-4373-b348-7b1ada88f962",
+      "name" : "Demo Aptos Inventory to Commerce Cloud",
+      "enabled" : false,
+      "desc" : "Demo transformation of Aptos inventory API to Commerce Cloud Xml",
+      "status" : "READY",
+      "snsARN" : "arn:aws:sns:us-east-1:194810246581:Ignition_Job_e2a3ed17-d4af-4375-bbf4-50967c0b25c5",
+      "key" : "IC-00000001",
+      "environment" : "STAGING"
+    },
     "name" : "Upload File from Map",
     "key" : "Core::UploadFileFromMapTask",
     "comment" : "Upload inventory file to an archive location",
